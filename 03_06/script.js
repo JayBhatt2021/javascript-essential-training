@@ -22,3 +22,9 @@ const backpack = {
 };
 
 console.log("The backpack object:", backpack);
+console.log("The pocketNum value:", backpack.pocketNum);
+console.log("The left strapLength value:", backpack.strapLength.left);
+
+const query = "pocketNum";
+console.log("The pocketNum value:", backpack[query]);
+console.log("The property-hyphen value:", backpack["property-hyphen"]);

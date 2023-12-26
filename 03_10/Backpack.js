@@ -1,6 +1,7 @@
 /**
  * Creating classes:
  *
+ * Two Different Ways of Doing the Same Thing:
  * Class declaration: class Name {}
  * Class expression:  const Name = class {}
  */

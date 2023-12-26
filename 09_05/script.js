@@ -9,26 +9,21 @@ import backpackObjectArray from "./components/data.js";
  * Add event listener to the lid-toggle button.
  */
 const lidToggle = function () {
-   
   // Find the current backpack object in backpackObjectArray
-  let backpackObject = backpackObjectArray.find( ({ id }) => id === this.parentElement.id );
-  
+  const backpackObject = backpackObjectArray.find(
+    ({ id }) => id === this.parentElement.id
+  );
+
   // Toggle lidOpen status
-  backpackObject.lidOpen == true 
-    ? backpackObject.lidOpen = false 
-    : backpackObject.lidOpen = true;
+  backpackObject.lidOpen = !backpackObject.lidOpen;
 
   // Toggle button text
-  this.innerText == "Open lid" 
-    ? this.innerText = "Close lid" 
-    : this.innerText = "Open lid";
+  this.innerText = this.innerText === "Open Lid" ? "Close Lid" : "Open Lid";
 
   // Set visible property status text
-  let status = this.parentElement.querySelector(".backpack__lid span");
-  status.innerText == "closed"
-    ? (status.innerText = "open")
-    : (status.innerText = "closed");
-}
+  const status = this.parentElement.querySelector(".backpack__lid span");
+  status.innerText = status.innerText === "open" ? "closed" : "open";
+};
 
 /**
  * - Loop through backpackObjectArray
@@ -66,16 +61,12 @@ const backpackList = backpackObjectArray.map((backpack) => {
         backpack.lidOpen ? "open" : "closed"
       }</span></li>
     </ul>
-    <button class="lid-toggle">Open lid</button>
+    <button class="lid-toggle">Open Lid</button>
   `;
 
-  const button = backpackArticle.querySelector(".lid-toggle")
-  const status = backpackArticle.querySelector(".backpack__lid span")
+  const button = backpackArticle.querySelector(".lid-toggle");
 
-  button.addEventListener("click", (event) => {
-    console.log(event)
-    status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open"
-  })
+  button.addEventListener("click", lidToggle);
 
   return backpackArticle;
 });

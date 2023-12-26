@@ -1,10 +1,10 @@
 /**
  * Challenge: Add a new element
  * - In JavaScript, create a new element to hold a navigation menu
- * - Add an unordered list and a series of no less than five links to the list 
+ * - Add an unordered list and a series of no less than five links to the list
  * - Use single words like “home”, “about”, etc for the list items and set the src attribute to # for simplicity
  * - Add the new navigation element to the DOM directly after the header
- * - Write basic CSS and add classes as necessary to create a horizontal layout for the menu. 
+ * - Write basic CSS and add classes as necessary to create a horizontal layout for the menu.
  * - A tip: Use either display flex or display grid to create the horizontal menu.
  */
 
@@ -52,11 +52,28 @@ const content = `
   
 `;
 
-const main = document.querySelector(".maincontent");
+const newNavBarContent = `
+<ul style="list-style-type: none;">
+  <li><a href="#" style="text-decoration: none; display: block; float: left;">About</a></li>
+  <li><a href="#" style="text-decoration: none; display: block; float: left;">Home</a></li>
+  <li><a href="#" style="text-decoration: none; display: block; float: left;">News</a></li>
+  <li><a href="#" style="text-decoration: none; display: block; float: left;">Messages</a></li>
+  <li><a href="#" style="text-decoration: none; display: block; float: left;">Contact Us</a></li>
+</ul>
+`;
 
+const main = document.querySelector(".maincontent");
 const newArticle = document.createElement("article");
+const newNavBar = document.createElement("nav");
+
 newArticle.classList.add("backpack");
 newArticle.setAttribute("id", "everyday");
 newArticle.innerHTML = content;
 
+newNavBar.setAttribute("id", "horizontalNav");
+newNavBar.style.color = "gray";
+newNavBar.style.marginBottom = "3rem";
+newNavBar.innerHTML = newNavBarContent;
+
 main.append(newArticle);
+document.body.insertBefore(newNavBar, main);

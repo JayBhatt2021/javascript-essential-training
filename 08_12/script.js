@@ -55,8 +55,8 @@ newArticle.innerHTML = content;
 
 main.append(newArticle);
 
-if (everydayPack.backpackAge() >= 30) {
-  console.log("Backpack is used")
+if (everydayPack.volume > 15 && everydayPack.pocketNum >= 5) {
+  console.log("Backpack is big.");
 } else {
-  console.log("Backpack is new")
+  console.log("Backpack is small.");
 }

@@ -16,9 +16,18 @@ const greenPack = {
     console.log("this.volume in the method:", this.volume);
     this.volume = volume;
     console.log("this.volume after update:", this.volume);
-    // (function () {
-    //   console.log("this.volume in nested function:", this.volume);
-    // })();
+    // Anonymous IIFE hoisted to global scope (outside object).
+    (function () {
+      console.log(
+        "(Global Scope) this.volume in nested function:",
+        this.volume
+      );
+    })();
+    // Arrow IIFE stays in local scope. Arrow functions have no innate concept of "this".
+    // The arrow function looks around to figure out what "this" is.
+    (() => {
+      console.log("(Local Scope) this.volume in nested function:", this.volume);
+    })();
   },
 };
 

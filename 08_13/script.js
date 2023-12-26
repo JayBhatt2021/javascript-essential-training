@@ -55,20 +55,23 @@ newArticle.innerHTML = content;
 main.append(newArticle);
 
 const usedStatus = () => {
-  let age = everydayPack.backpackAge();
+  const age = everydayPack.backpackAge();
   let description;
-  if (age >= 30) {
-    if (age >= 365) {
-      if (age >= 1095) {
-        description = "old";
-      } else {
-        description = "used";
-      }
-    } else {
+  switch (true) {
+    case age < 30:
+      description = "new";
+      break;
+    case age < 365:
       description = "lightly used";
-    }
-  } else {
-    description = "new";
+      break;
+    case age < 1095:
+      description = "used";
+      break;
+    case age >= 1095:
+      description = "old";
+      break;
+    default:
+      description = "N/A";
   }
 
   console.log(`
@@ -77,4 +80,4 @@ const usedStatus = () => {
   `);
 };
 
-usedStatus()
+usedStatus();

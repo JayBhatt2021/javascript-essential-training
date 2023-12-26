@@ -24,6 +24,7 @@ const frogpack = {
   },
   lidOpen: false,
   image: "../../assets/images/frog.svg",
+  description: "This is a backpack with a frog on it.",
   toggleLid: function (lidStatus) {
     this.lidOpen = lidStatus;
   },
@@ -57,3 +58,26 @@ const content = `
       }</span></li>
     </ul>  
 `;
+
+const renderArticle = () => {
+  const articleElement = document.createElement("article");
+  articleElement.innerHTML = content;
+  articleElement.prepend(renderFigure());
+  return articleElement;
+};
+
+const renderFigure = () => {
+  const figureElement = document.createElement("figure");
+  const imageElement = document.createElement("img");
+  const figureCaptionElement = document.createElement("figcaption");
+
+  imageElement.setAttribute("src", frogpack.image);
+  imageElement.setAttribute("alt", "An image of a frog backpack");
+
+  figureCaptionElement.innerText = frogpack.description;
+
+  figureElement.append(imageElement, figureCaptionElement);
+  return figureElement;
+};
+
+document.querySelector("main").append(renderArticle());

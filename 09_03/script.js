@@ -39,6 +39,14 @@ const backpackList = backpackObjectArray.map((backpack) => {
     <button class="lid-toggle">Open lid</button>
   `;
 
+  const button = backpackArticle.querySelector(".lid-toggle");
+  const lidStatus = backpackArticle.querySelector("li.backpack__lid span");
+
+  button.addEventListener("click", (event) => {
+    console.log(event);
+    lidStatus.innerText = lidStatus.innerText === "open" ? "closed" : "open";
+  });
+
   return backpackArticle;
 });
 

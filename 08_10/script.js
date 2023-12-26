@@ -3,15 +3,27 @@
  * @link https://developer.mozilla.org/en-US/docs/Glossary/Callback_function
  */
 
+// Create a finalTip object with all the data. Send it to the printHTML callback.
+const tipCalculator = (sum, percentage, locale, currency, callback) => {
+  let tip = sum * (percentage / 100);
+  let total = sum + tip;
+
+  const finalTip = {
+    sum: formatter(locale, currency, sum),
+    percentage: percentage + "%",
+    tip: formatter(locale, currency, tip),
+    total: formatter(locale, currency, total),
+  };
+
+  callback(finalTip);
+};
+
 // Helper function to format currency numbers. Used by tipCalculator
-const formatter = (locale = "en-US", currency = "USD", value) => {
-  let formattedValue = new Intl.NumberFormat(locale, {
+const formatter = (locale = "en-US", currency = "USD", value) =>
+  new Intl.NumberFormat(locale, {
     style: "currency",
     currency: currency,
   }).format(value);
-
-  return formattedValue;
-};
 
 // Callback receives finalTip object, creates and outputs table on the DOM.
 const printHTML = (finalTip) => {
@@ -37,17 +49,4 @@ const printHTML = (finalTip) => {
   document.querySelector("main").append(tipTable);
 };
 
-// Create a finalTip object with all the data. Send it to the printHTML callback.
-const tipCalculator = (sum, percentage, locale, currency) => {
-  let tip = sum * (percentage / 100);
-  let total = sum + tip;
-
-  const finalTip = {
-    sum: formatter(locale, currency, sum),
-    percentage: percentage + "%",
-    tip: formatter(locale, currency, tip),
-    total: formatter(locale, currency, total),
-  };
-};
-
-tipCalculator(29.95, 18, "de-DE", "EUR");
+tipCalculator(29.95, 18, "de-DE", "EUR", printHTML);

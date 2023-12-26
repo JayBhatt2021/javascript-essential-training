@@ -1,18 +1,18 @@
 /**
- * Data types in JavaScript
+ * Data types in JavaScript (weakly-typed)
  * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures
  */
 
 // String:
 let stringDemo = "A string of text.";
-console.log("String:", stringDemo);
+console.log("String:", typeof stringDemo);
 
-// Numbes:
+// Number:
 let integerDemo = 4;
 console.log("Integer:", integerDemo);
 
 let floatDemo = 5.6;
-console.log("Floating point number:", floatDemo);
+console.log("Floating point number:", typeof floatDemo);
 
 // Boolean:
 let booleanDemo = true;
